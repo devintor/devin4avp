@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devin Torres — WRAVP 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #7A6230;
+    --black: #080808;
+    --off-black: #111111;
+    --card: #161616;
+    --border: rgba(201,168,76,0.18);
+    --text: #F0EDE6;
+    --muted: #8A8276;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 60px 0 48px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 52px;
+  }
+
+  .header-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .header-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 88px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .header-name span { color: var(--gold); }
+
+  .header-sub {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: .04em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+  .header-sub-item { display: flex; align-items: center; gap: 7px; }
+  .header-sub-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold-dim); flex-shrink: 0; }
+
+  /* ── MISSION STATEMENT ── */
+  .mission {
+    margin-bottom: 60px;
+    padding: 36px 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission::after {
+    content: '"';
+    font-family: var(--serif);
+    font-size: 200px;
+    color: var(--gold);
+    opacity: 0.04;
+    position: absolute;
+    right: -10px;
+    top: -40px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .mission p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 2.4vw, 22px);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--text);
+    position: relative;
+    z-index: 1;
+  }
+  .mission-attr {
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .24em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── REAL PLATFORM ── */
+  .platform { margin-bottom: 64px; }
+
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  .pillar {
+    background: var(--card);
+    padding: 28px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s;
+  }
+  .pillar:hover { background: #1c1c1c; }
+
+  .pillar-letter {
+    font-family: var(--serif);
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.12;
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity .2s;
+  }
+  .pillar:hover .pillar-letter { opacity: 0.18; }
+
+  .pillar-word {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .pillar-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .pillar-body {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  .pillar-bullets {
+    margin-top: 12px;
+    list-style: none;
+  }
+  .pillar-bullets li {
+    font-size: 12px;
+    color: #6A6560;
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .pillar-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+    font-size: 10px;
+  }
+
+  .pillar-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .12em;
+    color: var(--gold-dim);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── CREDENTIALS ── */
+  .creds { margin-bottom: 64px; }
+
+  .creds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+
+  .cred-item {
+    background: var(--card);
+    padding: 22px 24px;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s;
+  }
+  .cred-item:hover { border-bottom-color: var(--gold); }
+
+  .cred-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .cred-label {
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* ── FIRESIDE CHATS ── */
+  .events { margin-bottom: 64px; }
+
+  .event-row {
+    display: flex;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    align-items: center;
+  }
+  .event-row:first-child { border-top: 1px solid rgba(201,168,76,0.08); }
+
+  .event-date {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    color: var(--gold);
+    min-width: 72px;
+    flex-shrink: 0;
+  }
+  .event-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+  .event-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .event-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .1em;
+    color: var(--gold-dim);
+    border: 1px solid var(--border);
+    padding: 3px 9px;
+    border-radius: 1px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+  }
+
+  /* ── SUPPORT / CTA ── */
+  .cta {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 44px 40px;
+    margin-bottom: 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .cta-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .cta-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 1px;
+    transition: background .2s, transform .1s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    text-decoration: none;
+    border: 1px solid var(--gold-dim);
+    border-radius: 1px;
+    transition: border-color .2s, color .2s, transform .1s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 16px;
+  }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp .6s ease forwards;
+  }
+  .delay-1 { animation-delay: .1s; }
+  .delay-2 { animation-delay: .22s; }
+  .delay-3 { animation-delay: .34s; }
+  .delay-4 { animation-delay: .46s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 580px) {
+    .platform-grid { grid-template-columns: 1fr; }
+    .creds-grid { grid-template-columns: 1fr 1fr; }
+    .header-name { font-size: 52px; }
+    .mission { padding: 26px 24px; }
+    .cta { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header fade-up">
+    <div class="header-eyebrow">Alpha Phi Alpha Fraternity, Inc. &mdash; Western Region</div>
+    <h1 class="header-name">Devin<br><span>Torres.</span></h1>
+    <div class="header-sub">
+      <span class="header-sub-item">Candidate for WRAVP</span>
+      <span class="header-sub-item">77th Western Regional Convention</span>
+      <span class="header-sub-item">April 2026 &middot; Tucson, AZ</span>
+    </div>
+  </header>
+
+  <!-- MISSION -->
+  <div class="mission fade-up delay-1">
+    <p>Brotherhood is not a byproduct of the work we do. It is the foundation from which the work flows. The Western Region deserves leadership that builds that foundation — and then goes further.</p>
+    <div class="mission-attr">R.E.A.L. Platform &mdash; @devin4avp</div>
+  </div>
+
+  <!-- PLATFORM -->
+  <section class="platform fade-up delay-2">
+    <div class="section-label">The Platform</div>
+    <div class="platform-grid">
+
+      <div class="pillar">
+        <div class="pillar-letter">R</div>
+        <div class="pillar-word">R &mdash; Relationships</div>
+        <div class="pillar-title">Strengthening Our Brotherhood</div>
+        <div class="pillar-body">Genuine connection across every district — not networking, not small talk, not gripping in passing. Brothers who actually know each other.</div>
+        <ul class="pillar-bullets">
+          <li>Regional retreats built around relationship-building, not agendas</li>
+          <li>Meaningful matriculation into grad chapters</li>
+          <li>The fraternity should be worried about brothers — not the other way around</li>
+        </ul>
+        <div class="pillar-tag">Internal Development</div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-letter">E</div>
+        <div class="pillar-word">E &mdash; Expansion</div>
+        <div class="pillar-title">Expanding Our Impact</div>
+        <div class="pillar-body">Don't disappear into Alpha — carry it with you into your community. Programming that tangibly uplifts. Chapters and brothers rewarded for doing the work.</div>
+        <ul class="pillar-bullets">
+          <li>AWEF access streamlined and promoted to every chapter</li>
+          <li>Recognition system for chapters with exceptional community impact</li>
+          <li>Don't disappear into Alpha — carry it into the world</li>
+        </ul>
+        <div class="pillar-tag">Expansion</div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-letter">A</div>
+        <div class="pillar-word">A &mdash; Accountability</div>
+        <div class="pillar-title">Holding High the Name</div>
+        <div class="pillar-body">Amplify the good so that it outshines. Brand starts at intake. Brothers who hold high the name everywhere — not just in chapter meetings.</div>
+        <ul class="pillar-bullets">
+          <li>Intake as the first statement of organizational culture</li>
+          <li>Social media strategy that leads with impact, not strolls</li>
+          <li>Empower, don't punish — elevate what's right</li>
+        </ul>
+        <div class="pillar-tag">Internal Development</div>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-letter">L</div>
+        <div class="pillar-word">L &mdash; Leverage</div>
+        <div class="pillar-title">Getting Brothers Opportunities</div>
+        <div class="pillar-body">We have resources — AWEF, connected alumni, a network that spans the West. Brothers can't use resources they don't know exist. And leverage works both ways.</div>
+        <ul class="pillar-bullets">
+          <li>Alpha Career Fair — more companies, better awareness, real access</li>
+          <li>Phirst Pham &amp; NPHC-wide career fair in the pipeline</li>
+          <li>Make AWEF and regional resources visible and reachable</li>
+        </ul>
+        <div class="pillar-tag">Expansion</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="creds fade-up delay-3">
+    <div class="section-label">Track Record</div>
+    <div class="creds-grid">
+      <div class="cred-item">
+        <div class="cred-num">$13K</div>
+        <div class="cred-label">raised for SoCal college chapters in 24 hours</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">~50</div>
+        <div class="cred-label">brothers initiated through IMDP leadership across FA25–SP26</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">4+1</div>
+        <div class="cred-label">Alpha leadership roles — 4 chapter positions + SoCal Assistant District Director</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">$75K+</div>
+        <div class="cred-label">NSBE budget managed — zero deficit, sponsored by Meta, Accenture &amp; IBM</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">120+</div>
+        <div class="cred-label">students sent to regional &amp; national NSBE conferences at no personal cost</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-num">USC</div>
+        <div class="cred-label">Industrial &amp; Systems Engineering, Class of 2026 &middot; Minor in Computer Science</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIRESIDE CHATS -->
+  <section class="events fade-up delay-4">
+    <div class="section-label">Fireside Chat Series &mdash; All Five Districts</div>
+    <div class="event-row">
+      <div class="event-date">MAR 31</div>
+      <div><div class="event-name">Southern California</div><div class="event-sub">7pm PT &middot; Virtual &middot; Open to all SoCal + Hawaii + Korea brothers</div></div>
+      <div class="event-badge">District 1</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">APR 1</div>
+      <div><div class="event-name">Northern California</div><div class="event-sub">7pm PT &middot; Virtual &middot; Open to all NorCal brothers</div></div>
+      <div class="event-badge">District 2</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">APR 2</div>
+      <div><div class="event-name">Tri-State (AZ / NV / NM)</div><div class="event-sub">7pm PT &middot; Virtual &middot; Open to all Tri-State brothers</div></div>
+      <div class="event-badge">District 3</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">APR 3</div>
+      <div><div class="event-name">Rocky Mountain</div><div class="event-sub">7pm PT &middot; Virtual &middot; Open to all CO, WY, ID, MT, UT brothers</div></div>
+      <div class="event-badge">District 4</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">APR 4</div>
+      <div><div class="event-name">Pacific Northwest + Alaska</div><div class="event-sub">7pm PT &middot; Virtual &middot; Open to all PNW + AK brothers</div></div>
+      <div class="event-badge">District 5</div>
+    </div>
+    <div class="event-row">
+      <div class="event-date">APR 6</div>
+      <div><div class="event-name">All-Candidates Forum</div><div class="event-sub">All three WRAVP candidates &middot; 90 min &middot; Open to entire Western Region</div></div>
+      <div class="event-badge">Region-Wide</div>
+    </div>
+  </section>
+
+  <!-- CTA / SUPPORT -->
+  <section class="cta">
+    <div class="cta-title">Support the Campaign</div>
+    <div class="cta-sub">If you believe the Western Region deserves R.E.A.L. leadership — show up, share, and if you're able, contribute to help cover campaign expenses.</div>
+    <div class="cta-buttons">
+      <a href="https://givebutter.com" target="_blank" class="btn-primary">Support on Givebutter</a>
+      <a href="https://instagram.com/devin4avp" target="_blank" class="btn-secondary">Follow @devin4avp</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-name">Devin Torres &mdash; WRAVP '26</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/devin4avp">Instagram</a>
+      <a href="https://givebutter.com">Give</a>
+      <a href="mailto:devin@email.com">Contact</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
