@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Stepping · Devin Torres WRAVP 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.detail-hero {
+  padding-top: 56px;
+  min-height: 52vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin-bottom: 72px;
+}
+.detail-hero-bg { position: absolute; inset: 0; overflow: hidden; }
+.detail-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: brightness(.28); }
+.detail-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--black) 0%, rgba(6,6,6,.5) 50%, transparent 100%); }
+.detail-hero-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 0 32px 56px; width: 100%; }
+.breadcrumb { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.breadcrumb::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.breadcrumb a { color: var(--gold); text-decoration: none; }
+.page-headline { font-family: var(--display); font-size: clamp(52px, 9vw, 96px); line-height: .88; letter-spacing: .02em; color: var(--text); margin-bottom: 14px; }
+.page-headline .gold { color: var(--gold); }
+.page-tagline { font-family: var(--serif); font-size: clamp(15px, 2.2vw, 19px); font-style: italic; color: rgba(240,237,230,.6); max-width: 520px; line-height: 1.45; }
+
+/* Photo grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.photo-cell {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--card);
+  position: relative;
+}
+.photo-cell img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.75); transition: filter .35s; }
+.photo-cell:hover img { filter: brightness(1); }
+.photo-cell.tall { grid-row: span 2; aspect-ratio: auto; }
+.photo-cell.wide { grid-column: span 2; aspect-ratio: 16/8; }
+
+/* Placeholder cells for future photos */
+.photo-placeholder {
+  aspect-ratio: 1;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.photo-placeholder span { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; color: var(--faint); text-transform: uppercase; }
+
+/* Video embed */
+.video-section { margin: 2px 0; }
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: var(--card);
+  overflow: hidden;
+}
+.video-wrapper iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.video-placeholder-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.video-placeholder-box::after { content: ''; position: absolute; inset: 0; border: 1px dashed var(--border); margin: 2px; pointer-events: none; }
+.play-btn { width: 60px; height: 60px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.play-btn::after { content: ''; border-left: 20px solid var(--gold); border-top: 11px solid transparent; border-bottom: 11px solid transparent; margin-left: 5px; }
+.video-label { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
+.video-caption { font-family: var(--mono); font-size: 8px; letter-spacing: .14em; color: var(--faint); text-transform: uppercase; margin-top: 6px; }
+
+/* Write-up */
+.stepping-write { background: var(--card); padding: 40px 44px; margin-top: 2px; }
+.stepping-write p { font-size: 13.5px; color: var(--muted); line-height: 1.9; font-weight: 300; margin-bottom: 16px; max-width: 720px; }
+.stepping-write p:last-child { margin: 0; }
+.stepping-write strong { color: var(--text); font-weight: 500; }
+
+.nav-strip { display: flex; justify-content: space-between; align-items: center; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px; }
+.nav-strip a { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+.nav-strip a:hover { color: var(--gold); }
+.nav-strip .prev::before { content: '←'; }
+.nav-strip .next::after { content: '→'; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+@media (max-width: 640px) {
+  .photo-grid { grid-template-columns: 1fr 1fr; }
+  .photo-cell.wide { grid-column: span 2; aspect-ratio: 4/3; }
+  .photo-cell.tall { grid-row: span 1; aspect-ratio: 1; }
+  .stepping-write { padding: 28px 24px; }
+  .detail-hero-content { padding: 0 20px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span>devin</span>4<span>avp</span></a>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <span class="nav-link">Platform &#x25BE;</span>
+        <ul class="dropdown">
+          <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+          <li><a href="expansion.html">E — Real Expansion</a></li>
+          <li><a href="accountability.html">A — Real Accountability</a></li>
+          <li><a href="leverage.html">L — Real Leverage</a></li>
+          <li><a href="stepping.html">Real Stepping</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
+    </ul>
+    <a href="support.html" class="nav-cta">Support &rarr;</a>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<ul class="mobile-menu" id="mobile-menu">
+  <li><a href="index.html">Home</a></li>
+  <div class="mobile-section">Platform</div>
+  <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+  <li><a href="expansion.html">E — Real Expansion</a></li>
+  <li><a href="accountability.html">A — Real Accountability</a></li>
+  <li><a href="leverage.html">L — Real Leverage</a></li>
+  <li><a href="stepping.html">Real Stepping</a></li>
+  <div class="mobile-section">More</div>
+  <li><a href="about.html">About</a></li>
+  <li><a href="support.html">Support</a></li>
+</ul>
+
+<div class="detail-hero">
+  <div class="detail-hero-bg">
+    <img src="assets/images/chapter-fa24.jpg" alt="Alpha Delta stepping">
+  </div>
+  <div class="detail-hero-content">
+    <div class="breadcrumb fade-up d1">
+      <a href="index.html">Home</a> / Culture / Real Stepping
+    </div>
+    <div class="page-headline fade-up d2">REAL <span class="gold">STEPPING.</span></div>
+    <div class="page-tagline fade-up d3">The culture, the craft, the brotherhood made visible.</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">Alpha Culture</div>
+
+  <!-- PHOTO GRID — add images to assets/images/ and update src paths -->
+  <div class="photo-grid reveal">
+    <div class="photo-cell tall">
+      <img src="assets/images/chapter-fa24.jpg" alt="Alpha Delta FA24">
+    </div>
+    <div class="photo-cell">
+      <img src="assets/images/headshot.jpg" alt="Devin Torres">
+    </div>
+    <div class="photo-placeholder">
+      <span>Add photo</span>
+    </div>
+    <div class="photo-placeholder">
+      <span>Add photo</span>
+    </div>
+    <div class="photo-placeholder">
+      <span>Add photo</span>
+    </div>
+  </div>
+
+  <!-- VIDEO — replace the placeholder with an actual embed when ready -->
+  <!-- To use YouTube: replace the placeholder div with:
+       <div class="video-wrapper">
+         <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+       </div>
+  -->
+  <!-- To use a local file: add it to assets/video/ and use:
+       <video controls style="width:100%">
+         <source src="assets/video/stepshow.mp4" type="video/mp4">
+       </video>
+  -->
+  <div class="video-section reveal">
+    <div class="video-placeholder-box">
+      <div class="play-btn"></div>
+      <div class="video-label">Step show footage coming soon</div>
+      <div class="video-caption">Add YouTube embed or drop .mp4 into assets/video/</div>
+    </div>
+  </div>
+
+  <div class="stepping-write reveal">
+    <p>This is where it lives — the energy, the craft, the culture that makes Alpha distinct. Stepping isn't just performance. It's discipline, coordination, and brotherhood made visible. It takes investment, practice, and brothers who care enough to show up.</p>
+    <p><strong>Real stepping is an expression of real brotherhood.</strong> You can't fake it. The work it requires is the same work a healthy chapter requires — presence, accountability, and brothers who are genuinely invested in something together. Alpha West should be doing this at the highest level and making sure the region sees it.</p>
+    <p>Add more photos and video to this page by dropping files into the <code style="font-family:var(--mono);font-size:11px;color:var(--gold)">assets/images/</code> and <code style="font-family:var(--mono);font-size:11px;color:var(--gold)">assets/video/</code> folders in the repository.</p>
+  </div>
+
+  <div class="nav-strip">
+    <a href="leverage.html" class="prev">Real Leverage</a>
+    <a href="index.html">Back to platform</a>
+    <a href="about.html" class="next">About Devin</a>
+  </div>
+
+  <footer>
+    <div class="footer-name">Devin Torres &middot; WRAVP 2026</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/devin4avp" target="_blank">Instagram</a>
+      <a href="support.html">Give</a>
+      <a href="https://linkedin.com/in/devintorres" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

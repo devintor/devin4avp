@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Devin Torres · WRAVP 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.about-hero {
+  padding-top: 56px;
+  min-height: 58vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin-bottom: 72px;
+}
+.about-hero-bg { position: absolute; inset: 0; overflow: hidden; }
+.about-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; filter: brightness(.25); }
+.about-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--black) 0%, rgba(6,6,6,.45) 50%, transparent 100%); }
+.about-hero-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 0 32px 56px; width: 100%; }
+.breadcrumb { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.breadcrumb::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.breadcrumb a { color: var(--gold); text-decoration: none; }
+.about-name { font-family: var(--display); font-size: clamp(60px, 10vw, 112px); line-height: .88; letter-spacing: .02em; color: var(--text); margin-bottom: 14px; }
+.about-name .gold { color: var(--gold); }
+.about-role { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: rgba(240,237,230,.5); text-transform: uppercase; }
+
+.bio-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+.bio-photo { border-radius: 2px; overflow: hidden; border: 1px solid var(--border); }
+.bio-photo img { width: 100%; display: block; object-fit: cover; }
+.bio-role-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bio-role-tag::before { content: ''; width: 18px; height: 1px; background: var(--gold); }
+.bio-text { font-size: 14px; color: var(--muted); line-height: 1.9; font-weight: 300; }
+.bio-text p { margin-bottom: 16px; }
+.bio-text p:last-child { margin: 0; }
+.bio-text strong { color: var(--text); font-weight: 500; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-bottom: 64px;
+}
+.stat-card {
+  background: var(--card);
+  padding: 28px 26px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s;
+}
+.stat-card:hover { border-bottom-color: var(--gold); }
+.stat-num { font-family: var(--serif); font-size: 38px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+.stat-label { font-size: 11.5px; color: var(--muted); line-height: 1.5; font-weight: 300; }
+
+.cred-section { margin-bottom: 64px; }
+.cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.cred-card { background: var(--card); padding: 24px 28px; }
+.cred-org { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+.cred-role { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+.cred-detail { font-size: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+@media (max-width: 680px) {
+  .bio-layout { grid-template-columns: 1fr; gap: 28px; }
+  .bio-photo { width: 140px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .cred-grid { grid-template-columns: 1fr; }
+  .about-hero-content { padding: 0 20px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span>devin</span>4<span>avp</span></a>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <span class="nav-link">Platform &#x25BE;</span>
+        <ul class="dropdown">
+          <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+          <li><a href="expansion.html">E — Real Expansion</a></li>
+          <li><a href="accountability.html">A — Real Accountability</a></li>
+          <li><a href="leverage.html">L — Real Leverage</a></li>
+          <li><a href="stepping.html">Real Stepping</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="about.html" class="nav-link active" data-page="about.html">About</a></li>
+      <li class="nav-item"><a href="support.html" class="nav-link" data-page="support.html">Support</a></li>
+    </ul>
+    <a href="support.html" class="nav-cta">Support &rarr;</a>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<ul class="mobile-menu" id="mobile-menu">
+  <li><a href="index.html">Home</a></li>
+  <div class="mobile-section">Platform</div>
+  <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+  <li><a href="expansion.html">E — Real Expansion</a></li>
+  <li><a href="accountability.html">A — Real Accountability</a></li>
+  <li><a href="leverage.html">L — Real Leverage</a></li>
+  <li><a href="stepping.html">Real Stepping</a></li>
+  <div class="mobile-section">More</div>
+  <li><a href="about.html">About</a></li>
+  <li><a href="support.html">Support</a></li>
+</ul>
+
+<div class="about-hero">
+  <div class="about-hero-bg">
+    <img src="assets/images/headshot.jpg" alt="Devin Torres">
+  </div>
+  <div class="about-hero-content">
+    <div class="breadcrumb fade-up d1"><a href="index.html">Home</a> / About</div>
+    <div class="about-name fade-up d2">DEVIN<br><span class="gold">TORRES.</span></div>
+    <div class="about-role fade-up d3">Alpha Delta · USC · SoCal Assistant District Director · Candidate for WRAVP</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">Who I Am</div>
+
+  <div class="bio-layout reveal">
+    <div class="bio-photo">
+      <img src="assets/images/headshot.jpg" alt="Devin Torres">
+    </div>
+    <div>
+      <div class="bio-role-tag">Alpha Delta Chapter · USC Class of 2027</div>
+      <div class="bio-text">
+        <p>I'm a junior at USC studying Industrial and Systems Engineering. I hold four leadership positions in Alpha Delta Chapter and serve as the Southern California Assistant District Director.</p>
+        <p>I am the type of person that when I think something needs to get done, I can't wait around for someone else to do it. Right now, I think Alpha West needs to break out of our comfort zone and reckon honestly with the direction we're heading. There are real problems in front of us, and we've been recycling surface-level solutions to them for too long.</p>
+        <p><strong>I am incredibly pensive, highly strategic, and creative.</strong> I know how to build things, sustain them, and make them matter. I've done it in Alpha and outside of it. That's why I'm running — not because I think leadership is a title worth having, but because I think there's work that needs to be done and I can contribute meaningfully to it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Track Record</div>
+
+  <div class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="stat-num">$13K</div>
+      <div class="stat-label">Raised for SoCal college chapters in a single 24-hour push</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~50</div>
+      <div class="stat-label">Brothers initiated through IMDP leadership across FA25 and SP26</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">$75K+</div>
+      <div class="stat-label">NSBE budget managed, zero deficit, Meta · Accenture · IBM</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">120+</div>
+      <div class="stat-label">Students to NSBE regional and national conferences at no personal cost</div>
+    </div>
+  </div>
+
+  <div class="cred-section reveal">
+    <div class="section-label">Outside Alpha</div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <div class="cred-org">Meta</div>
+        <div class="cred-role">Software Engineering Intern</div>
+        <div class="cred-detail">Worked on Facebook's core codebase and feed recommendation algorithm. Shipped high-visibility features used at scale.</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-org">Capital One</div>
+        <div class="cred-role">Analyst Intern</div>
+        <div class="cred-detail">Identified a $25.78M quarterly NPV opportunity. Built SQL pipelines and dashboards that informed executive credit strategy.</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-org">Management Leadership for Tomorrow</div>
+        <div class="cred-role">Career Preparation Fellow</div>
+        <div class="cred-detail">Selective 18-month program for high-achieving diverse talent in business, engineering, and technology.</div>
+      </div>
+      <div class="cred-card">
+        <div class="cred-org">IEEE Xplore · MIT UTRC</div>
+        <div class="cred-role">Published Research</div>
+        <div class="cred-detail">Published in IEEE Xplore (Jan 2023). Presented Transformer-based audio research at the 2022 MIT Undergraduate Technology Research Conference.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-name">Devin Torres &middot; WRAVP 2026</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/devin4avp" target="_blank">Instagram</a>
+      <a href="support.html">Give</a>
+      <a href="https://linkedin.com/in/devintorres" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

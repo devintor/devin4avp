@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support the Campaign · Devin Torres WRAVP 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.support-hero {
+  padding-top: 56px;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  margin-bottom: 72px;
+}
+.support-hero-bg { position: absolute; inset: 0; overflow: hidden; background: var(--card); }
+.support-hero-bg::after { content: 'REAL'; font-family: var(--display); font-size: 38vw; color: var(--gold); opacity: .03; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; letter-spacing: .02em; pointer-events: none; }
+.support-hero-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 0 32px 56px; width: 100%; }
+.breadcrumb { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.breadcrumb::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.breadcrumb a { color: var(--gold); text-decoration: none; }
+.support-headline { font-family: var(--display); font-size: clamp(56px, 10vw, 112px); line-height: .88; letter-spacing: .02em; color: var(--text); margin-bottom: 14px; }
+.support-headline .gold { color: var(--gold); }
+.support-sub { font-family: var(--serif); font-size: clamp(15px, 2.2vw, 19px); font-style: italic; color: rgba(240,237,230,.55); max-width: 500px; line-height: 1.45; }
+
+.support-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 64px;
+}
+.support-card {
+  background: var(--card);
+  padding: 44px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.support-card.featured { border-top: 3px solid var(--gold); }
+.support-card-label { font-family: var(--mono); font-size: 9px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; }
+.support-card-title { font-family: var(--display); font-size: clamp(28px, 4.5vw, 42px); line-height: .92; letter-spacing: .02em; color: var(--text); }
+.support-card-body { font-size: 13.5px; color: var(--muted); line-height: 1.85; font-weight: 300; }
+
+.ways-section { margin-bottom: 64px; }
+.ways-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+.way-card { background: var(--card); padding: 28px 30px; }
+.way-num { font-family: var(--serif); font-size: 32px; font-weight: 900; color: var(--gold); opacity: .4; line-height: 1; margin-bottom: 12px; }
+.way-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+.way-body { font-size: 12px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+@media (max-width: 640px) {
+  .support-main { grid-template-columns: 1fr; }
+  .ways-grid { grid-template-columns: 1fr; }
+  .support-card { padding: 32px 28px; }
+  .support-hero-content { padding: 0 20px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span>devin</span>4<span>avp</span></a>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <span class="nav-link">Platform &#x25BE;</span>
+        <ul class="dropdown">
+          <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+          <li><a href="expansion.html">E — Real Expansion</a></li>
+          <li><a href="accountability.html">A — Real Accountability</a></li>
+          <li><a href="leverage.html">L — Real Leverage</a></li>
+          <li><a href="stepping.html">Real Stepping</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="about.html" class="nav-link" data-page="about.html">About</a></li>
+      <li class="nav-item"><a href="support.html" class="nav-link active" data-page="support.html">Support</a></li>
+    </ul>
+    <a href="https://givebutter.com/devin-torres-for-wravp-rneuhm" target="_blank" class="nav-cta">Give Now &rarr;</a>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<ul class="mobile-menu" id="mobile-menu">
+  <li><a href="index.html">Home</a></li>
+  <div class="mobile-section">Platform</div>
+  <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+  <li><a href="expansion.html">E — Real Expansion</a></li>
+  <li><a href="accountability.html">A — Real Accountability</a></li>
+  <li><a href="leverage.html">L — Real Leverage</a></li>
+  <li><a href="stepping.html">Real Stepping</a></li>
+  <div class="mobile-section">More</div>
+  <li><a href="about.html">About</a></li>
+  <li><a href="support.html">Support</a></li>
+</ul>
+
+<div class="support-hero">
+  <div class="support-hero-bg"></div>
+  <div class="support-hero-content">
+    <div class="breadcrumb fade-up d1"><a href="index.html">Home</a> / Support</div>
+    <div class="support-headline fade-up d2">SUPPORT<br>THE <span class="gold">CAMPAIGN.</span></div>
+    <div class="support-sub fade-up d3">April 8. Tucson. Help make it happen.</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="section-label">How to Help</div>
+
+  <div class="support-main reveal">
+    <div class="support-card featured">
+      <div class="support-card-label">Financial Support</div>
+      <div class="support-card-title">CONTRIBUTE ON GIVEBUTTER</div>
+      <div class="support-card-body">Campaign funds go toward printing materials, travel to Tucson, and any costs associated with putting together a real campaign. Every contribution — big or small — signals credibility and shows brothers across the region that this is serious.</div>
+      <a href="https://givebutter.com/devin-torres-for-wravp-rneuhm" target="_blank" class="btn-primary">Contribute Now &rarr;</a>
+    </div>
+    <div class="support-card">
+      <div class="support-card-label">Follow the Campaign</div>
+      <div class="support-card-title">FOLLOW @DEVIN4AVP</div>
+      <div class="support-card-body">Every post, every share, and every story matters. If you believe in this platform, make sure the brothers in your chapter and across your district see it. Follow, share, and bring people into the conversation.</div>
+      <a href="https://instagram.com/devin4avp" target="_blank" class="btn-secondary">Follow on Instagram &rarr;</a>
+    </div>
+  </div>
+
+  <div class="ways-section reveal">
+    <div class="section-label">Three Ways to Support</div>
+    <div class="ways-grid">
+      <div class="way-card">
+        <div class="way-num">01</div>
+        <div class="way-title">Contribute financially</div>
+        <div class="way-body">Even $10 or $25 helps. The Givebutter page is linked above. Personal contributions from Alpha brothers and family carry the most weight.</div>
+      </div>
+      <div class="way-card">
+        <div class="way-num">02</div>
+        <div class="way-title">Share the platform</div>
+        <div class="way-body">Send this site to your chapter president, your alumni contacts, or any brother in the Western Region who you think needs to hear what R.E.A.L. is about.</div>
+      </div>
+      <div class="way-card">
+        <div class="way-num">03</div>
+        <div class="way-title">Come to Tucson</div>
+        <div class="way-body">If you're a delegate at the 77th Western Regional Convention on April 8 — your vote is the most direct form of support. Show up and keep it real.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-name">Devin Torres &middot; WRAVP 2026</div>
+    <div class="footer-links">
+      <a href="https://instagram.com/devin4avp" target="_blank">Instagram</a>
+      <a href="https://givebutter.com/devin-torres-for-wravp-rneuhm" target="_blank">Give</a>
+      <a href="https://linkedin.com/in/devintorres" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
