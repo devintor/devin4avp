@@ -8,184 +8,86 @@
 <link rel="stylesheet" href="css/main.css">
 <style>
 .detail-hero {
-  padding-top: 56px;
-  min-height: 52vh;
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  margin-bottom: 72px;
+  padding-top: 56px; min-height: 52vh; display: flex;
+  align-items: flex-end; position: relative; margin-bottom: 64px;
 }
-.detail-hero-bg {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-.detail-hero-bg img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
-  filter: brightness(.28);
-}
-.detail-hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, var(--black) 0%, rgba(6,6,6,.5) 50%, transparent 100%);
-}
-.detail-hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 32px 56px;
-  width: 100%;
-}
-.detail-breadcrumb {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .2em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.detail-breadcrumb a { color: var(--gold); text-decoration: none; }
-.detail-breadcrumb::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
-.detail-pillar-tag {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .22em;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.detail-letter-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border: 1px solid var(--gold-dim);
-  border-radius: 1px;
-  font-family: var(--display);
-  font-size: 15px;
-  color: var(--gold);
-  line-height: 1;
-}
-.detail-headline {
-  font-family: var(--display);
-  font-size: clamp(52px, 9vw, 96px);
-  line-height: .88;
-  letter-spacing: .02em;
-  color: var(--text);
-  margin-bottom: 16px;
-}
+.detail-hero-bg { position: absolute; inset: 0; overflow: hidden; }
+.detail-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; filter: brightness(.28); }
+.detail-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, var(--black) 0%, rgba(6,6,6,.5) 50%, transparent 100%); }
+.detail-hero-content { position: relative; z-index: 2; max-width: 960px; margin: 0 auto; padding: 0 32px 52px; width: 100%; }
+.breadcrumb { font-family: var(--mono); font-size: 9px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.breadcrumb::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.breadcrumb a { color: var(--gold); text-decoration: none; }
+.detail-pillar-tag { font-family: var(--mono); font-size: 9px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.detail-letter-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border: 1px solid var(--gold-dim); border-radius: 1px; font-family: var(--display); font-size: 15px; color: var(--gold); line-height: 1; }
+.detail-headline { font-family: var(--display); font-size: clamp(52px, 9vw, 96px); line-height: .88; letter-spacing: .02em; color: var(--text); margin-bottom: 14px; }
 .detail-headline .gold { color: var(--gold); }
-.detail-tagline {
-  font-family: var(--serif);
-  font-size: clamp(15px, 2.2vw, 19px);
-  font-style: italic;
-  color: rgba(240,237,230,.6);
-  max-width: 540px;
-  line-height: 1.45;
-}
-.detail-layout {
+.detail-tagline { font-family: var(--serif); font-size: clamp(15px, 2.2vw, 19px); font-style: italic; color: rgba(240,237,230,.6); max-width: 540px; line-height: 1.45; }
+
+/* Photo grid */
+.photo-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 2px;
-  margin-bottom: 2px;
+  margin: 32px 0;
 }
-.detail-photo {
-  aspect-ratio: 4/5;
+.pg-2col { grid-template-columns: 1fr 1fr; }
+.pg-3col { grid-template-columns: 1fr 1fr 1fr; }
+.pg-2col-wide { grid-template-columns: 2fr 1fr; }
+.photo-cell {
   overflow: hidden;
   background: var(--card);
+  position: relative;
 }
-.detail-photo img {
+.photo-cell img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: brightness(.85);
+  filter: brightness(.8);
   transition: filter .35s;
+  display: block;
 }
-.detail-photo:hover img { filter: brightness(1); }
-.detail-photo.landscape { aspect-ratio: 16/9; grid-column: span 2; }
-.detail-write {
+.photo-cell:hover img { filter: brightness(1); }
+.photo-cell.sq { aspect-ratio: 1; }
+.photo-cell.land { aspect-ratio: 16/9; }
+.photo-cell.port { aspect-ratio: 3/4; }
+.photo-cell.tall { aspect-ratio: 2/3; }
+.photo-cell.span2 { grid-column: span 2; }
+.photo-cell.span3 { grid-column: span 3; }
+.write-block {
   background: var(--card);
-  padding: 40px 42px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 40px 44px;
 }
-.detail-write p {
+.write-block p {
   font-size: 13.5px;
   color: var(--muted);
   line-height: 1.9;
   font-weight: 300;
   margin-bottom: 16px;
+  max-width: 740px;
 }
-.detail-write p:last-of-type { margin-bottom: 0; }
-.detail-write strong { color: var(--text); font-weight: 500; }
-.detail-points {
-  list-style: none;
-  margin-top: 24px;
-  border-top: 1px solid var(--border);
-  padding-top: 20px;
+.write-block p:last-child { margin: 0; }
+.write-block strong { color: var(--text); font-weight: 500; }
+.points { list-style: none; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px; }
+.points li {
+  font-size: 12.5px; color: var(--muted);
+  padding: 9px 0 9px 18px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,.04); line-height: 1.55;
 }
-.detail-points li {
-  font-size: 12.5px;
-  color: var(--muted);
-  padding: 9px 0 9px 18px;
-  position: relative;
-  border-bottom: 1px solid var(--border-subtle);
-  line-height: 1.55;
-}
-.detail-points li:last-child { border: none; }
-.detail-points li::before {
-  content: '/';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-family: var(--mono);
-  font-size: 10px;
-  top: 9px;
-}
-.nav-strip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 64px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.nav-strip a {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .18em;
-  color: var(--muted);
-  text-transform: uppercase;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: color .2s;
-}
+.points li:last-child { border: none; }
+.points li::before { content: '/'; position: absolute; left: 0; color: var(--gold); font-family: var(--mono); font-size: 10px; top: 9px; }
+.nav-strip { display: flex; justify-content: space-between; align-items: center; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 12px; }
+.nav-strip a { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color .2s; }
 .nav-strip a:hover { color: var(--gold); }
 .nav-strip .prev::before { content: '←'; }
 .nav-strip .next::after { content: '→'; }
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.revealed { opacity: 1; transform: translateY(0); }
 @media (max-width: 640px) {
-  .detail-layout { grid-template-columns: 1fr; }
-  .detail-photo.landscape { grid-column: span 1; aspect-ratio: 4/3; }
-  .detail-write { padding: 28px 24px; }
-  .detail-hero-content { padding: 0 20px 40px; }
+  .pg-2col, .pg-3col, .pg-2col-wide { grid-template-columns: 1fr; }
+  .photo-cell.span2, .photo-cell.span3 { grid-column: span 1; }
+  .write-block { padding: 28px 24px; }
 }
+
+@media(max-width:680px){ .detail-hero-content { padding: 0 20px 36px; } }
 </style>
 </head>
 <body>
@@ -196,26 +98,24 @@
       <li class="nav-item">
         <span class="nav-link">Platform &#x25BE;</span>
         <ul class="dropdown">
-          <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+          <li><a href="brotherhood.html">R — Real Relationships</a></li>
           <li><a href="expansion.html">E — Real Expansion</a></li>
           <li><a href="accountability.html">A — Real Accountability</a></li>
           <li><a href="leverage.html">L — Real Leverage</a></li>
           <li><a href="stepping.html">Real Stepping</a></li>
         </ul>
       </li>
-      <li class="nav-item"><a href="about.html" class="nav-link" data-page="about.html">About</a></li>
-      <li class="nav-item"><a href="support.html" class="nav-link" data-page="support.html">Support</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
     </ul>
     <a href="support.html" class="nav-cta">Support &rarr;</a>
-    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <ul class="mobile-menu" id="mobile-menu">
   <li><a href="index.html">Home</a></li>
   <div class="mobile-section">Platform</div>
-  <li><a href="brotherhood.html">R — Real Brotherhood</a></li>
+  <li><a href="brotherhood.html">R — Real Relationships</a></li>
   <li><a href="expansion.html">E — Real Expansion</a></li>
   <li><a href="accountability.html">A — Real Accountability</a></li>
   <li><a href="leverage.html">L — Real Leverage</a></li>
@@ -226,32 +126,34 @@
 </ul>
 
 <div class="detail-hero">
-  <div class="detail-hero-bg">
-    <img src="assets/images/chapter-fa24.jpg" alt="Real Leverage">
-  </div>
+  <div class="detail-hero-bg"><img src="assets/images/leverage-genpres.jpg" alt="Real Leverage"></div>
   <div class="detail-hero-content">
-    <div class="detail-breadcrumb fade-up d1">
-      <a href="index.html">Home</a> / Platform / Real Leverage
-    </div>
+    <div class="breadcrumb fade-up d1"><a href="index.html">Home</a> / Platform / Real Leverage</div>
     <div class="detail-pillar-tag fade-up d1"><span class="detail-letter-badge">L</span> Leverage</div>
-    <div class="detail-headline fade-up d2">REAL<br><span class="gold">LEVERAGE.</span></div>
+    <div class="detail-headline fade-up d2">REAL <span class="gold">LEVERAGE.</span></div>
     <div class="detail-tagline fade-up d3">Making real use of our network and resources.</div>
   </div>
 </div>
 
 <div class="page">
   <div class="section-label">Leverage</div>
-  <div class="detail-layout reveal">
-      <div class="detail-write">
-      <p>Alpha had a career fair at regional convention. Nobody knew about it. That's the problem in one sentence.</p>
-      <p><strong>We have resources that brothers aren't using because they don't know they exist.</strong> AWEF. Connected alumni. Career pipelines. A fraternity that spans industries, companies, and institutions across the entire Western United States. The network is there. The access isn't.</p>
-      <p>Leverage is also a two-way commitment. The region opens the doors — makes the resources visible, makes the connections available, builds the infrastructure. Brothers have to walk through. That's the deal. But you can't hold brothers accountable for not using a door they didn't know existed.</p>
-        <ul class="detail-points"><li>Alpha Career Fair — more companies, real awareness, promoted well in advance</li><li>AWEF made visible and navigable for every chapter in the region</li><li>Alumni network activation — connecting brothers to mentors and opportunities</li><li>Career support as a regional priority, not an afterthought</li><li>Brothers putting brothers on — culturally expected, not case by case</li></ul>
-      </div>
-      <div class="detail-photo">
-        <img src="assets/images/chapter-fa24.jpg" alt="Real Leverage">
-      </div>
-    </div>
+
+  
+<div class="photo-grid reveal">
+  <div class="photo-cell land"><img src="assets/images/leverage-genpres.jpg" alt="Alpha Delta with General President"></div>
+</div>
+
+  <div class="write-block reveal">
+    <p>Alpha had a career fair at regional convention. Nobody knew about it. That's the gap this platform is built to close.</p>
+<p><strong>We have resources that brothers aren't using because they don't know they exist.</strong> AWEF. Connected alumni. Career pipelines. A fraternity that spans industries, companies, and institutions across the entire Western United States. The network is there. The access isn't.</p>
+<p>Leverage is also a two-way commitment. The region opens the doors — makes the resources visible, makes the connections available, builds the infrastructure. Brothers have to walk through. But you can't hold brothers accountable for not using a door they didn't know existed.</p>
+    <ul class="points">
+<li>Alpha Career Fair — more companies, real awareness, promoted well in advance</li>
+<li>AWEF made visible and navigable for every chapter in the region</li>
+<li>Alumni network activation — connecting brothers to mentors and opportunities</li>
+<li>Career support as a regional priority, not an afterthought</li>
+<li>Brothers putting brothers on — culturally expected, not case by case</li></ul>
+  </div>
 
   <div class="nav-strip">
     <a href="accountability.html" class="prev">Real Accountability</a>
@@ -268,7 +170,6 @@
     </div>
   </footer>
 </div>
-
 <script src="js/main.js"></script>
 </body>
 </html>
