@@ -85,7 +85,7 @@
   color: var(--muted);
   text-transform: uppercase;
 }
-
+ 
 /* ── MISSION BLOCK ── */
 .mission-block {
   padding: 52px 56px;
@@ -137,7 +137,7 @@
 }
 .mission-body p { margin-bottom: 16px; }
 .mission-body p:last-child { margin: 0; }
-
+ 
 /* ── PLATFORM GRID ── */
 .platform-section { padding-top: 0; border: none; }
 .platform-intro {
@@ -157,13 +157,15 @@
 }
 .pillar {
   background: var(--card);
-  padding: 36px 38px;
+  padding: 36px 38px 32px;
   position: relative;
   overflow: hidden;
   transition: background .2s;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: inherit;
+  cursor: pointer;
 }
 .pillar:hover { background: #161616; }
 .pillar-ghost {
@@ -226,22 +228,38 @@
   color: var(--muted);
   line-height: 1.75;
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  flex-grow: 1;
 }
 .pillar-cta {
-  font-family: var(--mono);
-  font-size: 8px;
-  letter-spacing: .18em;
-  color: var(--gold-dim);
-  text-transform: uppercase;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: color .2s;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  transition: all .25s ease;
+  align-self: flex-start;
 }
-.pillar:hover .pillar-cta { color: var(--gold); }
-.pillar-cta::after { content: '→'; }
-
+.pillar-cta .arrow {
+  display: inline-block;
+  transition: transform .25s ease;
+  font-size: 14px;
+}
+.pillar:hover .pillar-cta {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+.pillar:hover .pillar-cta .arrow {
+  transform: translateX(4px);
+}
+ 
 @media (max-width: 620px) {
   .pillars { grid-template-columns: 1fr; }
   .hero-content { padding: 0 20px; }
@@ -251,7 +269,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -276,7 +294,7 @@
     </button>
   </div>
 </nav>
-
+ 
 <!-- MOBILE MENU -->
 <ul class="mobile-menu" id="mobile-menu">
   <li><a href="index.html">Home</a></li>
@@ -290,7 +308,7 @@
   <li><a href="about.html">About</a></li>
   <li><a href="support.html">Support</a></li>
 </ul>
-
+ 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg">
@@ -307,9 +325,9 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="page">
-
+ 
   <!-- MISSION -->
   <section style="padding-top: 72px; border: none;">
     <div class="section-label">The Mission</div>
@@ -322,13 +340,13 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- PLATFORM -->
   <section class="platform-section">
     <div class="section-label">R.E.A.L. Platform</div>
     <p class="platform-intro">Four pillars. Each one a commitment to keeping it real.</p>
     <div class="pillars">
-
+ 
       <a href="relationships.html" class="pillar reveal">
         <div class="pillar-ghost">R</div>
         <div class="pillar-meta">
@@ -337,9 +355,9 @@
         <div class="pillar-title">RELATIONSHIPS.</div>
         <div class="pillar-tagline">Real relationships over surface-level networking.</div>
         <div class="pillar-body">Genuine connection across every district. Not gripping in passing at a regional conference. Brothers who know each other's stories and carry that through to grad chapters.</div>
-        <div class="pillar-cta">Read more</div>
+        <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
-
+ 
       <a href="expansion.html" class="pillar reveal">
         <div class="pillar-ghost">E</div>
         <div class="pillar-meta">
@@ -348,9 +366,9 @@
         <div class="pillar-title">EXPANSION.</div>
         <div class="pillar-tagline">Real community impact over mere presence.</div>
         <div class="pillar-body">Don't disappear into Alpha. Carry it into the world. Programming that tangibly uplifts — chapters empowered and recognized for doing the real work.</div>
-        <div class="pillar-cta">Read more</div>
+        <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
-
+ 
       <a href="accountability.html" class="pillar reveal">
         <div class="pillar-ghost">A</div>
         <div class="pillar-meta">
@@ -359,9 +377,9 @@
         <div class="pillar-title">ACCOUNTABILITY.</div>
         <div class="pillar-tagline">Real standards over feel-good conversations.</div>
         <div class="pillar-body">Not policing — elevating. Brand starts at intake. Culture is built through what we reward and what we model, not what we punish.</div>
-        <div class="pillar-cta">Read more</div>
+        <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
-
+ 
       <a href="leverage.html" class="pillar reveal">
         <div class="pillar-ghost">L</div>
         <div class="pillar-meta">
@@ -370,12 +388,12 @@
         <div class="pillar-title">LEVERAGE.</div>
         <div class="pillar-tagline">Real use of our resources and network.</div>
         <div class="pillar-body">Alpha had a career fair at regional convention. Nobody knew about it. Brothers won't use resources they don't know exist. That changes.</div>
-        <div class="pillar-cta">Read more</div>
+        <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
-
+ 
     </div>
   </section>
-
+ 
   <!-- FOOTER -->
   <footer>
     <div class="footer-name">Devin Torres · WRAVP 2026</div>
@@ -385,9 +403,9 @@
       <a href="https://linkedin.com/in/devintorres" target="_blank">LinkedIn</a>
     </div>
   </footer>
-
+ 
 </div>
-
+ 
 <script src="js/main.js"></script>
 <style>
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
