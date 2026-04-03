@@ -85,7 +85,7 @@
   color: var(--muted);
   text-transform: uppercase;
 }
- 
+
 /* ── MISSION BLOCK ── */
 .mission-block {
   padding: 52px 56px;
@@ -137,7 +137,7 @@
 }
 .mission-body p { margin-bottom: 16px; }
 .mission-body p:last-child { margin: 0; }
- 
+
 /* ── PLATFORM GRID ── */
 .platform-section { padding-top: 0; border: none; }
 .platform-intro {
@@ -259,7 +259,7 @@
 .pillar:hover .pillar-cta .arrow {
   transform: translateX(4px);
 }
- 
+
 @media (max-width: 620px) {
   .pillars { grid-template-columns: 1fr; }
   .hero-content { padding: 0 20px; }
@@ -269,7 +269,7 @@
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
@@ -294,7 +294,7 @@
     </button>
   </div>
 </nav>
- 
+
 <!-- MOBILE MENU -->
 <ul class="mobile-menu" id="mobile-menu">
   <li><a href="index.html">Home</a></li>
@@ -308,11 +308,14 @@
   <li><a href="about.html">About</a></li>
   <li><a href="support.html">Support</a></li>
 </ul>
- 
+
 <!-- HERO -->
 <div class="hero">
   <div class="hero-bg">
-    <img src="assets/images/headshot.jpg" alt="Brother Devin Torres">
+    <picture>
+      <source media="(min-width: 681px)" srcset="assets/images/leverage-genpres.jpg">
+      <img src="assets/images/headshot.jpg" alt="Brother Devin Torres">
+    </picture>
   </div>
   <div class="hero-content">
     <div class="hero-eyebrow fade-up d1">Alpha Phi Alpha · Western Region · 77th Convention</div>
@@ -325,9 +328,9 @@
     </div>
   </div>
 </div>
- 
+
 <div class="page">
- 
+
   <!-- MISSION -->
   <section style="padding-top: 72px; border: none;">
     <div class="section-label">The Mission</div>
@@ -340,13 +343,13 @@
       </div>
     </div>
   </section>
- 
+
   <!-- PLATFORM -->
   <section class="platform-section">
     <div class="section-label">R.E.A.L. Platform</div>
     <p class="platform-intro">Four pillars. Each one a commitment to keeping it real.</p>
     <div class="pillars">
- 
+
       <a href="relationships.html" class="pillar reveal">
         <div class="pillar-ghost">R</div>
         <div class="pillar-meta">
@@ -357,7 +360,7 @@
         <div class="pillar-body">Genuine connection across every district. Not gripping in passing at a regional conference. Brothers who know each other's stories and carry that through to grad chapters.</div>
         <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
- 
+
       <a href="expansion.html" class="pillar reveal">
         <div class="pillar-ghost">E</div>
         <div class="pillar-meta">
@@ -368,7 +371,7 @@
         <div class="pillar-body">Don't disappear into Alpha. Carry it into the world. Programming that tangibly uplifts — chapters empowered and recognized for doing the real work.</div>
         <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
- 
+
       <a href="accountability.html" class="pillar reveal">
         <div class="pillar-ghost">A</div>
         <div class="pillar-meta">
@@ -379,7 +382,7 @@
         <div class="pillar-body">Not policing — elevating. Brand starts at intake. Culture is built through what we reward and what we model, not what we punish.</div>
         <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
- 
+
       <a href="leverage.html" class="pillar reveal">
         <div class="pillar-ghost">L</div>
         <div class="pillar-meta">
@@ -390,10 +393,10 @@
         <div class="pillar-body">Alpha had a career fair at regional convention. Nobody knew about it. Brothers won't use resources they don't know exist. That changes.</div>
         <div class="pillar-cta">Click to read more <span class="arrow">→</span></div>
       </a>
- 
+
     </div>
   </section>
- 
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-name">Devin Torres · WRAVP 2026</div>
@@ -403,9 +406,9 @@
       <a href="https://linkedin.com/in/devintorres" target="_blank">LinkedIn</a>
     </div>
   </footer>
- 
+
 </div>
- 
+
 <script src="js/main.js"></script>
 <style>
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
